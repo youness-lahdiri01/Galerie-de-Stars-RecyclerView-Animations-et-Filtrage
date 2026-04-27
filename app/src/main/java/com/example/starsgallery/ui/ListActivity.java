@@ -15,6 +15,7 @@ import com.example.starsgallery.adapter.StarAdapter;
 import com.example.starsgallery.service.StarService;
 
 public class ListActivity extends AppCompatActivity {
+    private StarAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,8 @@ public class ListActivity extends AppCompatActivity {
 
         RecyclerView rv = findViewById(R.id.recycle_view);
         rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new StarAdapter(this, StarService.getInstance().findAll()));
+        adapter = new StarAdapter(this, StarService.getInstance().findAll());
+        rv.setAdapter(adapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,7 +41,9 @@ public class ListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.d("ListActivity", "Texte saisi : " + newText);
+                if (adapter != null) {
+                    adapter.getFilter().filter(newText);
+                }
                 return true;
             }
         });
