@@ -11,6 +11,8 @@
 
     <TextView
         android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_toEndOf="@id/imgStar"
         android:layout_marginStart="16dp"
         android:text="Nom"
@@ -18,6 +20,8 @@
 
     <RatingBar
         android:id="@+id/rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tvName"
         android:layout_toEndOf="@id/imgStar"
         android:numStars="5"
